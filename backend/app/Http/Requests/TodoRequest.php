@@ -25,7 +25,6 @@ class TodoRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'status' => 'numeric|between:1,3',
         ];
     }
 }
