@@ -1,0 +1,28 @@
+.container {
+    max-width: 1200px;
+    width: calc(100% - 32px * 2);
+    margin: 80px auto;
+}
+
+.label {
+    padding: 0.5em;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    width: 50%;
+    color: #fff;
+}
+
+.link {
+    color: #fff;
+    padding: 0.8em;
+    border-radius: 5px;
+}
+
+.form-group:not(:first-of-type) {
+    margin-top: 16px;
+}
+
+.footer {
+    margin: 56px 0 0 0;
+}
