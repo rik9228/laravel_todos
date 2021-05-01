@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Todo extends Model
 {
-    protected $fillable = ['title', 'status'];
+    protected $fillable = ['title', 'status', 'due_date']; // ユーザー側で自由に変更が効く項目
 
     /**
      * 状態定義
      */
     const STATUS = [
-        1 => ['label' => '未着手', 'class' => 'bg-danger'],
-        2 => ['label' => '着手中', 'class' => 'bg-info'],
-        3 => ['label' => '完了', 'class' => 'bg-success'],
+        1 => ['label_text' => '未着手', 'html_class' => 'btn-danger'],
+        2 => ['label_text' => '着手中', 'html_class' => 'btn-primary'],
+        3 => ['label_text' => '完了', 'html_class' => 'btn-success'],
     ];
 
     /**
@@ -27,11 +27,11 @@ class Todo extends Model
         $status = $this->attributes['status'];
 
         // 定義されていなければ空文字を返す
-        if (!isset(self::STATUS[$status])) {
+        if (empty(self::STATUS[$status])) {
             return '';
         }
 
-        return self::STATUS[$status]['label'];
+        return self::STATUS[$status]['label_text'];
     }
 
     /**
@@ -44,10 +44,10 @@ class Todo extends Model
         $status = $this->attributes['status'];
 
         // 定義されていなければ空文字を返す
-        if (!isset(self::STATUS[$status])) {
+        if (empty(self::STATUS[$status])) {
             return '';
         }
 
-        return self::STATUS[$status]['class'];
+        return self::STATUS[$status]['html_class'];
     }
 }

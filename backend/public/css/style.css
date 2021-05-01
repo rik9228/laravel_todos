@@ -19,6 +19,10 @@
     border-radius: 5px;
 }
 
+.form-group:not(:first-of-type) {
+    margin-top: 16px;
+}
+
 .footer {
     margin: 56px 0 0 0;
 }

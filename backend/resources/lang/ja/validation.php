@@ -147,7 +147,8 @@ return [
 
     'attributes' => [
         'title' => 'タスク名',
-        'status' => 'タスクの状態'
+        'status' => 'タスクの状態',
+        'due_date' => '期限日'
     ],
 
 ];

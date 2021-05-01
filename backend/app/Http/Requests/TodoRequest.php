@@ -25,6 +25,7 @@ class TodoRequest extends FormRequest
     {
         return [
             'title' => 'required',
+            'due_date' => 'required',
         ];
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\TodoRequest;
 use App\Models\Todo;
+use Illuminate\Support\Facades\Auth;
 
 class TodosController extends Controller
 {
@@ -16,8 +17,10 @@ class TodosController extends Controller
      */
     public function index()
     {
-        $todos = Todo::all();
+        $user = Auth::user(); // ログインしているユーザーの情報を取得
+        $todos = Todo::paginate(4);
         return view('todos.index', ['todos' => $todos]);
+        // return view('todos.index', ['todos' => $todos, 'user' => $user]);
     }
 
     /**
@@ -42,7 +45,7 @@ class TodosController extends Controller
         $form = $request->all();
         $todo->fill($form)->save();
 
-        return redirect('/todos'); // GET処理が走る
+        return redirect()->route('todos_index'); // GET処理が走る
     }
 
     /**
@@ -80,8 +83,9 @@ class TodosController extends Controller
         $todo = Todo::find($id);
         $todo->title = $request->title;
         $todo->status = $request->status;
+        $todo->due_date = $request->due_date;
         $todo->save();
-        return redirect('/todos');
+        return redirect()->route('todos_index');
     }
 
     /**
@@ -94,6 +98,6 @@ class TodosController extends Controller
     {
         $todo = Todo::find($id);
         $todo->delete();
-        return redirect('/todos');
+        return redirect()->route('todos_index');
     }
 }
