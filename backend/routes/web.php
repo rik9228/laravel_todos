@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('/', function () {
+  return view('welcome');
+});
+
 Route::get('/todos', 'TodosController@index')->name('todos_index');
 
 Route::get('/todos/create', 'TodosController@create')->name('todos_create');
