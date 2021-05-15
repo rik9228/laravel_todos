@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Todo extends Model
 {
-    protected $fillable = ['title', 'status', 'due_date']; // ユーザー側で自由に変更が効く項目
+    protected $fillable = ['title', 'status', 'due_date'];
+    // ユーザー側で自由に変更が効く項目
 
     /**
      * 状態定義
